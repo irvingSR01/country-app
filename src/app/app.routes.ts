@@ -5,24 +5,24 @@ import { ContactPageComponent } from './shared/pages/contact-page/contact-page.c
 import { countriesRoutes } from './countries/countries.routes';
 
 export const routes: Routes = [
-    {
-        path: 'home',
-        component: HomePageComponent,
-    },
-    {
-        path: 'about',
-        component: AboutPageComponent,
-    },
-    {
-        path: 'contact',
-        component: ContactPageComponent
-    },
+    // {
+    //     path: 'home',
+    //     component: HomePageComponent,
+    // },
+    // {
+    //     path: 'about',
+    //     component: AboutPageComponent,
+    // },
+    // {
+    //     path: 'contact',
+    //     component: ContactPageComponent
+    // },
     {
         path: 'countries',
         loadChildren: () => import('./countries/countries.routes').then(m => m.countriesRoutes)
     },
     {
         path: '**',
-        redirectTo: 'home'
+        redirectTo: 'countries'
     }
 ];
