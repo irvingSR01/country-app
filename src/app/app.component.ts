@@ -12,7 +12,7 @@ import { SidebarComponent } from './shared/components/sidebar/sidebar.component'
     AboutPageComponent, 
     HomePageComponent, 
     RouterOutlet, 
-    SidebarComponent
+    SidebarComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
