@@ -2,15 +2,27 @@
 <hr>
 
 <div class="row">
-	<div class="col">
+	<div class="col text-center">
 		<!-- Busquedas -->
-		<app-search-box placeholder="Buscar por capital" (onValue)="searchByRegion($event)"></app-search-box>
+		<!-- <app-search-box placeholder="Buscar por capital" (onDebounce)="searchByRegion($event)"></app-search-box> -->
+		@for (region of regions; track $index) {
+			<button
+				class="btn mx-2"
+				[ngClass]="{'btn-outline-success': selectedRegion === region}"
+				(click)="searchByRegion(region)"
+			>{{ region }}</button>
+		}
 	</div>
 </div>
 
 <div class="row">
 	<div class="col">
 		<hr>
+
+		@if (isLoading) {
+			<app-loading-spinner></app-loading-spinner>
+		}
+		
 		<app-country-table [countries]="countries"></app-country-table>
 	</div>
 </div>
