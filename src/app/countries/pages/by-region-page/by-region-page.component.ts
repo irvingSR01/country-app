@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Country } from '../../interfaces/country';
 import { CountryService } from '../../services/countries.service';
 import { SearchBoxComponent } from "../../../shared/components/search-box/search-box.component";
 import { CountryTableComponent } from "../../components/country-table/country-table.component";
 import { CommonModule } from '@angular/common';
 import { LoadingSpinnerComponent } from '../../../shared/components/loading-spinner/loading-spinner.component';
+import { Region } from '../../interfaces/region.type';
 
-type Region = 'Africa'|'Americas'|'Asia'|'Europe'|'Oceania';
 
 @Component({
     selector: 'app-by-region-page',
@@ -27,7 +27,15 @@ export class ByRegionPageComponent {
   public selectedRegion?: Region;
   public isLoading: boolean = false;
 
+  @Input()
+  public initialValue: Region = '';
+
   constructor(private countryService: CountryService) { }
+
+  ngOnInit(): void {
+    this.countries = this.countryService.cacheStore.byRegion.countries;
+    this.selectedRegion = this.countryService.cacheStore.byRegion.region;
+  }
 
   searchByRegion(term: Region) {
     this.isLoading = true;
