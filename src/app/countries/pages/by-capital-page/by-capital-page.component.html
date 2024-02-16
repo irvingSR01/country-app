@@ -2,14 +2,20 @@
 <hr>
 
 <div class="row">
-    <div class="col">
-        <!-- Busquedas -->
-        <app-search-box placeholder="Buscar por capital" (onValue)="searchByCapital($event)"></app-search-box>
-    </div>
+	<div class="col">
+		<!-- Busquedas -->
+		<app-search-box placeholder="Buscar por capital" (onValue)="searchByCapital($event)"></app-search-box>
+	</div>
 </div>
 
 <div class="row">
-    <div class="col">
-        Tabla de resultados
-    </div>
+	<div class="col">
+		<hr>
+
+		@if (isLoading) {
+		<app-loading-spinner></app-loading-spinner>
+		}
+
+		<app-country-table [countries]="countries"></app-country-table>
+	</div>
 </div>
